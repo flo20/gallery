@@ -3,13 +3,14 @@
   text-align: center;
   margin-bottom: 3rem;
   position: relative;
+  margin-top: 5rem;
 }
 
 .imageSearch__form input {
   margin: 0 auto;
   background-color: transparent;
   border: transparent;
-  border-bottom: solid 2px #34495e;
+  border-bottom: solid 1px #c4e1ff;
   padding-bottom: 8px;
   width: 25%;
   font-weight: 200;
@@ -29,6 +30,16 @@
   position: absolute;
   top: 4px;
   background: transparent;
-  border: solid 2px #34495e;
+  border: solid 2px #c4e1ff;
+  border-radius: 5px;
   color: #fff;
+}
+
+.imageSearch__form button:hover {
+  background: rgb(255, 255, 255, 0.1);
+}
+.heading,
+p {
+  text-align: center;
+  color: #c4e1ff;
 }

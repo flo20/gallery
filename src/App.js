@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
+import ImageList from "./components/ImageList/ImageList";
 
 const api_key = "16628696-7ff6f3f64089c2a1c30e04a40";
 
@@ -33,6 +34,12 @@ class App extends Component {
     return (
       <div>
         <ImageSearch handleGetRequest={this.handleGetRequest} />
+
+        {/* {this.state.images.length > 0 &&
+          this.state.images.map((image) => {
+            return <p key={image.id}>{image.tags}</p>;
+          })} */}
+        <ImageList images={this.state.images} />
       </div>
     );
   }

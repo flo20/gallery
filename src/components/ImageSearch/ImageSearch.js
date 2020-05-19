@@ -1,20 +1,25 @@
 import React from "react";
+import "./ImageSearch.css";
 
-const ImageSearch = (props) => {
+const ImageSearch = ({ handleGetRequest }) => {
   // console.log(props.handleGetRequest);
 
   return (
     <div>
-      <h1>Welcome to Pixy Gallery</h1>
-      <form onSubmit={props.handleGetRequest}>
-        <input
-          type="text"
-          autoComplete="off"
-          name="searchValue"
-          placeholder="Search for images..."
-        />
-        <button>Search</button>
-      </form>
+      <h1 className="heading">Gallery</h1>
+      <p>Browse through amazing images</p>
+      <div className="imageSearch">
+        {/* <h1>Welcome to Pixy Gallery</h1> */}
+        <form onSubmit={handleGetRequest} className="imageSearch__form">
+          <input
+            type="text"
+            autoComplete="off"
+            name="searchValue"
+            placeholder="Search for images..."
+          />
+          <button>Search</button>
+        </form>
+      </div>
     </div>
   );
 };
