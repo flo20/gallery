@@ -5,8 +5,9 @@
 }
 
 .imageView__img {
-  height: 400px;
+  height: 600px;
   width: auto;
+  margin-bottom: 3rem;
 }
 
 .imageView__copyright {
@@ -39,4 +40,12 @@ span {
   background: transparent;
   border: solid 2px #34495e;
   margin-top: 10px;
+}
+
+.home_btn {
+  display: flex;
+  justify-content: center;
+}
+button {
+  color: #04264b;
 }

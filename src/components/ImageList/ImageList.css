@@ -17,6 +17,6 @@
 .image__details button {
   width: 100%;
   border: 0;
-  background-color: #c4e1ff;
+  background-color: rgb(245, 245, 245, 0.8);
   color: #04264b;
 }
