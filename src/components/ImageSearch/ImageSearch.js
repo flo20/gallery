@@ -9,7 +9,6 @@ const ImageSearch = ({ handleGetRequest }) => {
       <h1 className="heading">GALLERY</h1>
       <p>Browse through amazing images</p>
       <div className="imageSearch">
-        {/* <h1>Welcome to Pixy Gallery</h1> */}
         <form onSubmit={handleGetRequest} className="imageSearch__form">
           <input
             type="text"

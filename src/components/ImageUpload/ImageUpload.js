@@ -1,8 +1,11 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
-//import axios from "axios";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import axios from "axios";
+import { Link } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 const ImageUpload = (e) => {
+  //styling form
   const styles = {
     marginLeft: "47rem",
     color: "#c4e1ff",
@@ -13,71 +16,90 @@ const ImageUpload = (e) => {
     paddingTop: "5rem",
     textAlign: "center",
     color: "#c4e1ff",
-    paddingLeft: "2rem",
+    paddingRight: "13rem",
+    paddingBottom: "2rem",
   };
 
-  //posting data
-  // const submit = (event) => {
-  //   let email = e.target[0].value;
-  //   let password = e.target[1].value;
-  //   let address = e.target[2].value;
-  //   let city = e.target[3].value;
-  //   let data = {
-  //     email,
-  //     password,
-  //     address,
-  //     city,
-  //   };
+  const inputStyle = {
+    borderRadius: "5px",
+    border: "none",
+    padding: "1rem",
+    display: "block",
+  };
 
-  //   console.log(data);
-  //   postLetter(data);
-  // };
+  //input for data
+  const [newImage, setNewImage] = useState({
+    owner: "",
+    image: "",
+    tags: "",
+  });
 
-  // const postLetter = (data) => {
-  //   //console.log(data);
-  //   axios
-  //     .post("", data)
-  //     .then((d) => {
-  //       console.log(d);
-  //     })
-  //     .catch((err) => alert(err));
-  // };
+  //event handler
+  const changeValueHandler = (e) => {
+    setNewImage({
+      ...newImage,
+      [e.target.name]: e.target.value,
+    });
+  };
 
+  const addImageHandler = (event) => {
+    event.preventDefault();
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/photos", newImage)
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
   return (
     <div>
-      <h4 style={titleStyles}>Submit Your Photo </h4>
-      <Form
-        style={styles}
-        // onSubmit={(e) => {
-        //   e.preventDefault();
-        //   submit(e);
-        // }}
-      >
-        <Form.Row>
-          <Form.Group>
-            <Form.Label>Name </Form.Label>
-            <Form.Control type="email" placeholder="Enter name" />
-          </Form.Group>
-        </Form.Row>
-
-        <Form.Row>
-          <Form.Group>
-            <Form.Label>Image link</Form.Label>
-            <Form.Control type="password" placeholder="Image url" />
-          </Form.Group>
-        </Form.Row>
-
-        <Form.Group>
-          Description
-          <Form.Control
-            as="textarea"
-            rows="3"
-            placeholder="Describe your image"
+      <form style={styles}>
+        <h4 style={titleStyles}>Upload Your Images </h4>
+        <div className="form-group">
+          <label htmlFor="owner">Name</label>
+          <input
+            style={inputStyle}
+            type="text"
+            name="owner"
+            placeholder="Enter name"
+            onChange={changeValueHandler}
           />
-        </Form.Group>
+        </div>
 
-        <Button type="submit">Submit</Button>
-      </Form>
+        <div className="form-group">
+          <label htmlFor="image">Image link</label>
+          <input
+            style={inputStyle}
+            type="text"
+            name="image"
+            placeholder="Image url"
+            onChange={changeValueHandler}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="tags">Tags</label>
+          <input
+            style={inputStyle}
+            type="text"
+            name="tags"
+            placeholder="e.g,cat,dog"
+            onChange={changeValueHandler}
+          />
+        </div>
+
+        <Link to="/myGallery">
+          <Button
+            type="submit"
+            onClick={addImageHandler}
+            style={{
+              borderRadius: "5px",
+            }}
+          >
+            Upload
+          </Button>
+        </Link>
+      </form>
     </div>
   );
 };

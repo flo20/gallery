@@ -9,6 +9,8 @@ class App extends Component {
     images: [],
     error: null,
   };
+
+  //event handler for fetching data
   handleGetRequest = async (e) => {
     e.preventDefault(); //prevent reload of page
 
@@ -17,18 +19,16 @@ class App extends Component {
     const url = `https://pixabay.com/api/?key=${api_key}&q=${searchTerm}&image_type=photo`;
 
     //console.log(this.state.images);
-
+    //fetching data
     const request = await fetch(url);
-
     const response = await request.json();
 
+    //error notification
     if (!searchTerm) {
       this.setState({ error: "Input required" });
     } else {
       // console.log(response.hits);
-
       this.setState({ images: response.hits, error: null });
-
       //console.log(searchTerm);
     }
   };
