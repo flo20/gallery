@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+//import axios from "axios";
 import axios from "../../axios-gallery";
+//import Spinner from "../Spinner/Spinner";
 
 const ImageUpload = (e) => {
   //styling form
@@ -33,12 +35,21 @@ const ImageUpload = (e) => {
     tags: "",
   });
 
+  useEffect(() => {
+    axios
+      .get("https://react-my-gallery.firebaseio.com/gallery.json")
+      .then((response) => {
+        setNewImage({ newImage: response.data });
+      });
+  }, []);
+
   //event handler
   const changeValueHandler = (e) => {
     setNewImage({
       ...newImage,
       [e.target.name]: e.target.value,
     });
+    return null;
   };
 
   const addImageHandler = (event) => {
@@ -53,6 +64,7 @@ const ImageUpload = (e) => {
         alert(err);
       });
   };
+
   return (
     <div>
       <form style={styles}>

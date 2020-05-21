@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./ImageView.css";
 
 const ImageView = (props) => {
-  console.log(props.location.state.image);
+  //console.log(props.location.state.image);
   const {
     largeImageURL: image,
     user: owner,
