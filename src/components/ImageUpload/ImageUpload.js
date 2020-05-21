@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import axios from "axios";
 import { Link } from "react-router-dom";
-//import { Redirect } from "react-router-dom";
+import axios from "../../axios-gallery";
 
 const ImageUpload = (e) => {
   //styling form
@@ -46,15 +45,18 @@ const ImageUpload = (e) => {
     event.preventDefault();
 
     axios
-      .post("https://jsonplaceholder.typicode.com/photos", newImage)
+      .post("/gallery.json", newImage)
       .then((response) => {
         console.log(response.data);
+      })
+      .catch((err) => {
+        alert(err);
       });
   };
   return (
     <div>
       <form style={styles}>
-        <h4 style={titleStyles}>Upload Your Images </h4>
+        <h4 style={titleStyles}>Upload Images </h4>
         <div className="form-group">
           <label htmlFor="owner">Name</label>
           <input
@@ -88,17 +90,11 @@ const ImageUpload = (e) => {
           />
         </div>
 
-        <Link to="/myGallery">
-          <Button
-            type="submit"
-            onClick={addImageHandler}
-            style={{
-              borderRadius: "5px",
-            }}
-          >
-            Upload
-          </Button>
-        </Link>
+        {/* <Link to="/myGallery"> */}
+        <Button type="submit" onClick={addImageHandler}>
+          Upload
+        </Button>
+        {/* </Link> */}
       </form>
     </div>
   );
