@@ -22,7 +22,7 @@ const ImageView = (props) => {
               alt={tags}
               className="imageView__img img-responsive"
             />
-            <div className="imageView__copyright"></div>
+            {/* <div className="imageView__copyright"></div> */}
 
             <p>
               Credit : <span>{owner}</span>
@@ -42,7 +42,7 @@ const ImageView = (props) => {
                   borderRadius: "5px",
                 }}
               >
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/" style={{ textDecoration: "none", border: "none" }}>
                   Back to Home Page
                 </Link>
               </button>

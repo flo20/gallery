@@ -6,7 +6,7 @@ const ImageSearch = ({ handleGetRequest }) => {
 
   return (
     <div>
-      <h1 className="heading">Gallery</h1>
+      <h1 className="heading">GALLERY</h1>
       <p>Browse through amazing images</p>
       <div className="imageSearch">
         {/* <h1>Welcome to Pixy Gallery</h1> */}
