@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .imageSearch {
   width: 100%;
   text-align: center;
@@ -22,6 +28,27 @@
 
 .imageSearch__form input:focus {
   outline: none;
+}
+
+video {
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  height: 110vh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.back_cont {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(255, 254, 254, 0.4)
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 57.5vh;
 }
 
 .imageSearch__form button {

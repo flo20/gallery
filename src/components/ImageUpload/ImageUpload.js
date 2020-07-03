@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 //import { Link } from "react-router-dom";
 //import axios from "axios";
 import axios from "../../axios-gallery";
+import Header from "../Header/Header";
 //import Spinner from "../Spinner/Spinner";
 
 const ImageUpload = (e) => {
@@ -49,7 +50,6 @@ const ImageUpload = (e) => {
       ...newImage,
       [e.target.name]: e.target.value,
     });
-    return null;
   };
 
   const addImageHandler = (event) => {
@@ -67,6 +67,7 @@ const ImageUpload = (e) => {
 
   return (
     <div>
+      <Header />
       <form style={styles}>
         <h4 style={titleStyles}>Upload Images </h4>
         <div className="form-group">
