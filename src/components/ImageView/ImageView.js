@@ -43,7 +43,7 @@ const ImageView = (props) => {
                 }}
               >
                 <Link to="/" style={{ textDecoration: "none", border: "none" }}>
-                  Back to Home Page
+                  Back to search
                 </Link>
               </button>
             </div>
