@@ -1,6 +1,5 @@
 .display_wrapper {
   display: grid;
-  align-items: flex-start;
-  grid-template-columns: repeat(3, 0.4fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(4, 0.4fr);
+  grid-gap: 1rem;
 }

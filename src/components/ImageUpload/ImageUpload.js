@@ -26,6 +26,11 @@ class ImageUpload extends React.Component {
     });
   };
 
+  //display message
+  onButtonClickHandler = () => {
+    window.alert("Your image has been saved in MyGallery.");
+  };
+
   render() {
     return (
       <div>
@@ -63,7 +68,11 @@ class ImageUpload extends React.Component {
               />
             </div>
 
-            <button type="submit" className="btn">
+            <button
+              type="submit"
+              className="btn"
+              onClick={this.onButtonClickHandler}
+            >
               Upload
             </button>
           </form>

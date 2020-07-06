@@ -3,13 +3,18 @@ import "./ImageDisplay.css";
 
 const ImageDisplay = (props) => {
   //displaying data on myGallery screen
+
+  // const displayDetailsHandler = () => {
+  //   alert("Hi");
+  // };
+
   return (
-    <div>
+    <div className="contain">
       <div className="display_cont">
-        <img src={props.image} alt="uploaded_img" className="display_size" />
-        Name:{props.name}
-        <br />
-        Tags:{props.tags}
+        {/* <div onClick={displayDetailsHandler}></div> */}
+        <img src={props.image} alt="upload_img" className="display_size" />
+        <div className="details">Name:{props.name}</div>
+        <div className="details">Tags:{props.tags}</div>
       </div>
     </div>
   );

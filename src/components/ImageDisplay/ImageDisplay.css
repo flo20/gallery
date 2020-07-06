@@ -1,17 +1,33 @@
 body {
   color: black;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.contain {
+  margin-top: 5rem;
+  margin-left: 2rem;
 }
 .display_size {
-  width: auto;
-  height: 40vh;
-  margin: 1.5rem;
+  width: 85%;
+  height: 300px;
+  margin: 2rem;
+  border-radius: 2px;
+}
+
+.details {
+  padding-left: 2rem;
 }
 .display_cont {
-  background: blueviolet;
-  width: 350px;
-  height: 50vh;
-  margin: 2rem;
+  border-radius: 5px;
+  background: white;
+  width: 400px;
+  height: 419px;
+  box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 }
+
 /* 
 .display_wrapper {
   display: grid;
