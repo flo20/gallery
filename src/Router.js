@@ -4,7 +4,7 @@ import App from "./App";
 import ImageView from "./components/ImageView/ImageView";
 import ImageUpload from "./components/ImageUpload/ImageUpload";
 // import Header from "./components/Header/Header";
-import MyGallery from "./components/MyGallery/MyGallery";
+import ResultDisplayed from "./components/ResultDisplayed/ResultDisplayed";
 
 const Router = () => {
   return (
@@ -14,7 +14,7 @@ const Router = () => {
         <Route path="/" exact component={App} />
         <Route path="/image/:id" component={ImageView} />
         <Route path="/upload" component={ImageUpload} />
-        <Route path="/myGallery" component={MyGallery} />
+        <Route path="/myGallery" component={ResultDisplayed} />
       </Switch>
     </BrowserRouter>
   );

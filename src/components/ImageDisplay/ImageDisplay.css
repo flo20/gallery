@@ -1,0 +1,21 @@
+body {
+  color: black;
+}
+.display_size {
+  width: auto;
+  height: 40vh;
+  margin: 1.5rem;
+}
+.display_cont {
+  background: blueviolet;
+  width: 350px;
+  height: 50vh;
+  margin: 2rem;
+}
+/* 
+.display_wrapper {
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: repeat(3, 0.4fr);
+  grid-gap: 1.5rem;
+} */
