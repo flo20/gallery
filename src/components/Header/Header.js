@@ -1,19 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
-  // const styles = {
-  //   textDecoration: "none",
-  //   paddingTop: "6px",
-  //   padding: "1rem",
-  //   color: "rgb(27, 27, 27)",
-  // };
   return (
     <>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/upload">Upload Image</Link>
-        <Link to="/myGallery">MyGallery</Link>
+      <div className="wrap">
+        <Link to="/" id="logo">
+          GALLERY
+        </Link>
+        <div className="head">
+          {/* <Link to="/" id="links">
+            Home
+          </Link> */}
+          <Link to="/upload" id="links">
+            Upload Image
+          </Link>
+          <Link to="/myGallery" id="links">
+            MyGallery
+          </Link>
+        </div>
       </div>
     </>
   );

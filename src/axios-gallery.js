@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://react-my-gallery.firebaseio.com/",
+  baseURL: "https://sample-gallery-67b54.firebaseio.com/",
 });
 
 export default instance;

@@ -9,11 +9,7 @@ const ImageList = (props) => {
       <div className="row">
         {props.images.map((image) => {
           return (
-            <div
-              key={image.id}
-              className="col-md-4"
-              style={{ marginBottom: "2rem" }}
-            >
+            <div key={image.id}>
               <div className="imageList__container">
                 <img
                   className="imageList__image"

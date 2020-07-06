@@ -14,63 +14,46 @@ body {
 
 .imageSearch__form input {
   margin: 0 auto;
-  background-color: transparent;
+  background-color: whitesmoke;
   border: transparent;
-  border-bottom: solid 1px #c4e1ff;
+  border-radius: 3px;
+  height: 35px;
   padding-bottom: 8px;
   width: 25%;
   font-weight: 200;
   letter-spacing: 2px;
   font-size: 16px;
-  color: #fff;
-  margin-right: 10px;
+  color: rgb(31, 23, 25);
 }
 
 .imageSearch__form input:focus {
   outline: none;
 }
 
-video {
-  position: fixed;
-  width: 100%;
-  left: 50%;
-  height: 110vh;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-}
-
-.back_cont {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3),
-    rgba(255, 254, 254, 0.4)
-  );
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  height: 57.5vh;
-}
-
 .imageSearch__form button {
   border: 0;
+  border-radius: 4px;
+  margin-left: 1rem;
   width: 7%;
   position: absolute;
-  top: 4px;
+  padding: 4px;
   background: transparent;
-  border: solid 2px #c4e1ff;
-  border-radius: 5px;
-  color: #fff;
+  border: solid 1px rgb(255, 245, 248);
+  color: rgb(255, 245, 248);
 }
 
 .imageSearch__form button:hover {
-  background: rgb(255, 255, 255, 0.1);
+  background: rgb(255, 255, 255, 0.2);
 }
 .heading,
 p {
   text-align: center;
-  color: #c4e1ff;
+  color: white;
 }
-
+p {
+  font-size: 20px;
+}
 .heading {
+  font-weight: 700;
   padding-top: 10rem;
 }

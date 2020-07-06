@@ -1,22 +1,16 @@
 import React from "react";
 import "./ImageSearch.css";
-import Nature from "../Video/nature.mp4";
 import Header from "../Header/Header";
+import ImageBackground from "../ImageBackground/ImageBackground";
 
 const ImageSearch = ({ handleGetRequest }) => {
   // console.log(props.handleGetRequest);
 
   return (
-    <div className="back_cont">
+    <div>
       <Header />
-      <div>
-        <video autoPlay loop>
-          <source src={Nature} type="video/mp4" />
-        </video>
-      </div>
-
+      <ImageBackground />
       <h1 className="heading">GALLERY</h1>
-
       <p>Browse through amazing images</p>
       <div className="imageSearch">
         <form onSubmit={handleGetRequest} className="imageSearch__form">
@@ -24,7 +18,7 @@ const ImageSearch = ({ handleGetRequest }) => {
             type="text"
             autoComplete="off"
             name="searchValue"
-            placeholder="Search for images..."
+            placeholder="Search for photos..."
           />
           <button>Search</button>
         </form>

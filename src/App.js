@@ -41,7 +41,7 @@ class App extends Component {
       <div>
         <ImageSearch handleGetRequest={this.handleGetRequest} />
         {this.state.error !== null ? (
-          <div style={{ color: "#c4e1ff", textAlign: "center" }}>
+          <div style={{ color: "rgb(255, 245, 248)", textAlign: "center" }}>
             {this.state.error}
           </div>
         ) : (
