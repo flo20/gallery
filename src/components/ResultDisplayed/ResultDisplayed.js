@@ -6,6 +6,7 @@ const ResultDisplayed = () => {
   return (
     <div>
       <Header />
+
       <ImageFetched />
     </div>
   );

@@ -19,7 +19,7 @@ body {
   border-radius: 3px;
   height: 35px;
   padding-bottom: 8px;
-  width: 25%;
+  width: 40%;
   font-weight: 200;
   letter-spacing: 2px;
   font-size: 16px;
@@ -55,5 +55,6 @@ p {
 }
 .heading {
   font-weight: 700;
-  padding-top: 10rem;
+  font-size: 3rem;
+  padding-top: 20rem;
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ImageList.css";
 
 const ImageList = (props) => {
-  // console.log(props);
+  console.log(props);
   return (
     <div className="container">
       <div className="row">

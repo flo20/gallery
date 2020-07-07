@@ -1,5 +1,5 @@
 .head {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 #links {
@@ -13,13 +13,16 @@
 }
 #logo {
   text-decoration: none;
-  padding-left: 2rem;
-  padding-right: 2rem;
   font-size: 1.7rem;
   color: #04264b;
+  padding: 0.5rem 2rem 2rem 2rem;
 }
 
 .wrap {
   display: flex;
-  height: 2.95rem;
+  height: 3.5rem;
+  position: fixed;
+  width: 100%;
+  background: white;
+  box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.6);
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import ImageList from "./components/ImageList/ImageList";
-
 const api_key = "16628696-7ff6f3f64089c2a1c30e04a40";
 
 class App extends Component {
@@ -19,6 +18,7 @@ class App extends Component {
     const url = `https://pixabay.com/api/?key=${api_key}&q=${searchTerm}&image_type=photo`;
 
     //console.log(this.state.images);
+
     //fetching data
     const request = await fetch(url);
     const response = await request.json();
@@ -47,7 +47,6 @@ class App extends Component {
         ) : (
           <ImageList images={this.state.images} />
         )}
-
         {/* {this.state.images.length > 0 &&
           this.state.images.map((image) => {
             return <p key={image.id}>{image.tags}</p>;
