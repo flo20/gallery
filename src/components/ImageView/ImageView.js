@@ -14,6 +14,17 @@ const ImageView = (props) => {
   } = props.location.state.image;
   return (
     <div className="container">
+      <Link
+        to="/"
+        style={{
+          textDecoration: "none",
+          border: "none",
+          fontFamily: "Raleway",
+          color: "rgb(252, 127, 105)",
+        }}
+      >
+        Back to search
+      </Link>
       <div className="row">
         <div className="col-sm-12">
           <div className="imageView__container">
@@ -24,29 +35,18 @@ const ImageView = (props) => {
             />
             {/* <div className="imageView__copyright"></div> */}
 
-            <p>
+            <p className="owner">
               Credit : <span>{owner}</span>
             </p>
 
-            <p>
+            <p className="download">
               <span>
                 <a target="_blank" href={pageURL}>
-                  Download
+                  Download Image
                 </a>
               </span>
             </p>
-            <div className="home_btn">
-              <button
-                style={{
-                  color: "#04264b",
-                  borderRadius: "5px",
-                }}
-              >
-                <Link to="/" style={{ textDecoration: "none", border: "none" }}>
-                  Back to search
-                </Link>
-              </button>
-            </div>
+            <div className="home_btn"></div>
           </div>
         </div>
       </div>

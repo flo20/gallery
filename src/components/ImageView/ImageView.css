@@ -1,46 +1,39 @@
 .imageView__container {
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: #04264b;
+  margin-left: 9rem;
 }
 
 .imageView__img {
+  width: 900px;
   height: 600px;
-  width: auto;
-  margin-bottom: 3rem;
-  margin-top: 4rem;
 }
 
 .imageView__copyright {
   color: #8f8f8f;
 }
-
+.owner {
+  color: #04264b;
+}
 .imageView__text {
   margin-top: 1rem;
 }
+.download,
+a {
+  text-decoration: none;
+}
 
+a:hover {
+  text-decoration: underline;
+  color: tomato;
+}
 .imageView__text h4,
 h5,
 span {
   letter-spacing: 1px;
-  color: #f39c12;
-}
-
-.imageView__text h4 span {
-  font-weight: bold;
-  color: #c0392b;
-}
-
-.imageView__text a {
-  font-weight: bold;
-  color: #c0392b;
-}
-
-.imageView__text button {
-  border: 0;
-  background: transparent;
-  border: solid 2px #34495e;
-  margin-top: 10px;
+  color: #04264b;
+  font-family: "Raleway", sans-serif;
 }
 
 .home_btn {

@@ -25,18 +25,20 @@ export class ImageFetched extends Component {
 
   render() {
     return (
-      <div>
-        <div className="display_wrapper">
-          {this.state.outcome.map((outcomes) => (
-            <ImageDisplay
-              key={outcomes.id}
-              name={outcomes.name}
-              image={outcomes.image}
-              tags={outcomes.tags}
-            />
-          ))}
+      <>
+        <div>
+          <div className="display_wrapper">
+            {this.state.outcome.map((outcomes) => (
+              <ImageDisplay
+                key={outcomes.id}
+                name={outcomes.name}
+                image={outcomes.image}
+                tags={outcomes.tags}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
