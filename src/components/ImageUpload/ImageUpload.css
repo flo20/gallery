@@ -16,6 +16,7 @@ body {
   height: 40px;
   color: #04264b;
   border-radius: 2rem;
+  border: none;
 }
 .btn:hover {
   color: tomato;
@@ -37,12 +38,19 @@ body {
 label {
   color: rgb(240, 248, 255);
 }
-.heads,
+.heads {
+  color: tomato;
+  text-align: center;
+  padding-right: 5rem;
+  font-size: 2.5rem;
+}
 h6 {
   color: tomato;
   text-align: center;
   padding-right: 5rem;
+  font-size: 1rem;
 }
+
 .texts {
   display: flex;
   justify-content: center;
@@ -54,13 +62,19 @@ h6 {
   width: 5rem;
 }
 .ico2 {
-  width: 7rem;
+  width: 4rem;
   padding-right: 6rem;
   transform: rotate(180deg);
 }
 
 .icos {
+  margin-top: 6rem;
   transform: rotate(270deg);
   height: 15rem;
   margin-left: 80rem;
+}
+#icos2 {
+  transform: rotate(180deg);
+  width: 4rem;
+  margin-left: 35rem;
 }

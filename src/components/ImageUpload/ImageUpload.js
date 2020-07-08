@@ -44,12 +44,10 @@ class ImageUpload extends React.Component {
               Create a personalized <br />
               image library.
             </h1>
-            <br />
             <h6>
-              “Photography is a way of feeling, of touching, of loving. What you
-              have caught on film is captured forever… <br />
-              It remembers little things, long after you have forgotten
-              everything.”
+              “Photography is a way of feeling, of touching, of loving. <br />
+              What you have caught on film is captured forever… It remembers
+              little things, long after you have forgotten everything.”
               <br /> — Aaron Siskind
             </h6>
           </div>
@@ -97,6 +95,7 @@ class ImageUpload extends React.Component {
           </div>
           <img src="mail.png" alt="icon" className="ico2" />
         </div>
+        <img src="swirl .png" alt="icon" id="icos2" />
         <img src="swirl .png" alt="icon" className="icos" />
       </div>
     );
