@@ -20,3 +20,43 @@
   box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .display_size {
+    width: 90%;
+    height: 170px;
+    margin: 0.5rem;
+  }
+  .display_cont {
+    width: 220px;
+    height: 250px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .display_size {
+    width: 90%;
+    height: 250px;
+    margin: 1rem;
+  }
+  .display_cont {
+    width: 300px;
+    height: 350px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .display_size {
+    width: 87%;
+    height: 300px;
+    margin: 1.6rem;
+  }
+  .display_cont {
+    margin-top: 1rem;
+    width: 400px;
+    height: 419px;
+  }
+}

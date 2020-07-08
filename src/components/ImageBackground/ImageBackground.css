@@ -23,3 +23,28 @@ video {
     rgba(65, 49, 61, 0.4)
   );
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  video {
+    height: 111vh;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  video {
+    height: 111vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .back_cont {
+    width: 100%;
+    height: 30.3rem;
+  }
+  video {
+    height: 100vh;
+  }
+}
