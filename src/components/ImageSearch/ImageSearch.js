@@ -10,7 +10,7 @@ const ImageSearch = ({ handleGetRequest }) => {
       <div>
         <Header />
         <ImageBackground />
-        <h1 className="heading">Explore your imagination.</h1>
+        <h1 className="heading">Explore your imagination</h1>
         <p>Browse through amazing images captured for you</p>
         <div className="imageSearch">
           <form onSubmit={handleGetRequest} className="imageSearch__form">
@@ -20,11 +20,11 @@ const ImageSearch = ({ handleGetRequest }) => {
               name="searchValue"
               placeholder="Search for photos..."
             />
-            <button>Search</button>
+            <button id="search">Search</button>
           </form>
         </div>
         <div className="capture">
-          Home to millions of photo lovers.
+          Home to millions of photo lovers,
           <br />
           Over 1.8 million+ high quality stock images shared by our talented
           community.

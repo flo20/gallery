@@ -1,12 +1,15 @@
 .head {
   margin-top: 1rem;
+  margin-left: 75rem;
 }
 
 #links {
   text-decoration: none;
   padding: 1.4rem;
   padding-bottom: 13px;
-  color: #04264b;
+  color: #04264b94;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
 }
 #links:hover {
   border-bottom: 2px solid tomato;

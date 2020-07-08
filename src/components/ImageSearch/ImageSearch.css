@@ -49,16 +49,28 @@ body {
 p {
   text-align: center;
   color: white;
+  font-family: "Raleway", sans-serif;
 }
 p {
   font-size: 20px;
 }
 .heading {
-  font-weight: 700;
   font-size: 3rem;
   padding-top: 12rem;
 }
 .capture {
   text-align: center;
   padding-top: 6rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: rgb(4, 38, 75, 0.3);
+}
+
+#search {
+  padding: 0.8rem;
+}
+#search:hover {
+  color: rgb(255, 154, 137);
+  cursor: pointer;
 }
