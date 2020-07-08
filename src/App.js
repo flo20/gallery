@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import ImageList from "./components/ImageList/ImageList";
+import "./App.css";
+
 const api_key = "16628696-7ff6f3f64089c2a1c30e04a40";
 
 class App extends Component {
@@ -36,6 +38,7 @@ class App extends Component {
   // componentDidMount() {
   //   this.handleGetRequest();
   // }
+
   render() {
     return (
       <div>

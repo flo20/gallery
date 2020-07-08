@@ -23,6 +23,12 @@ const ImageSearch = ({ handleGetRequest }) => {
             <button>Search</button>
           </form>
         </div>
+        <div className="capture">
+          Home to millions of photo lovers.
+          <br />
+          Over 1.8 million+ high quality stock images shared by our talented
+          community.
+        </div>
       </div>
     </div>
   );

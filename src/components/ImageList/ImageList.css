@@ -1,12 +1,14 @@
 .container {
-  margin-top: 15rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .row {
   display: grid;
-  align-items: flex-start;
-  grid-template-columns: repeat(3, 0.4fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(3, 0.3fr);
+  grid-gap: 1rem;
+  justify-content: center;
+  align-content: center;
 }
 
 .imageList__container {
@@ -14,17 +16,27 @@
   box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.6);
   text-align: left;
   overflow: hidden;
-}
-
-.imageList__image {
-  width: 100%;
+  width: 90%;
   height: 250px;
 }
 
-.image__details button {
+.imageList__image {
+  position: relative;
   width: 100%;
+  height: 250px;
+  z-index: -1;
+}
+
+.image__details button {
+  width: 90%;
+  height: 2rem;
   border: 0;
-  border-radius: 2px;
-  background-color: rgba(238, 228, 228, 0.9);
+  background-color: rgba(78, 77, 77, 0.2);
   color: #04264b;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.image__details button:hover {
+  color: tomato;
+  cursor: pointer;
 }
