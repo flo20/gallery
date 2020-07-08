@@ -10,9 +10,6 @@ const Header = () => {
           GALLERY
         </Link>
         <div className="head">
-          {/* <Link to="/" id="links">
-            Home
-          </Link> */}
           <Link to="/upload" id="links">
             Upload Image
           </Link>

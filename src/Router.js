@@ -10,7 +10,6 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={App} />
-
         <Route path="/image/:id" component={ImageView} />
         <Route path="/upload" component={ImageUpload} />
         <Route path="/myGallery" component={ResultDisplayed} />
