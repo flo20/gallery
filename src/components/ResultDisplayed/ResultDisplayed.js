@@ -18,7 +18,7 @@ const ResultDisplayed = () => {
             color: "rgb(252, 127, 105)",
           }}
         >
-          Back to search
+          Back to upload
         </Link>
       </div>
       <h1 id="heads">
