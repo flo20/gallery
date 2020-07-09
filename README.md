@@ -17,4 +17,4 @@ Register an application with Pixabay at [Pixabay Developer API](https://pixabay.
 
 - Background video by [Videvo Team](https://www.videvo.net/)
 
-## Deployed on Firebase
+## Deployed on Heroku
