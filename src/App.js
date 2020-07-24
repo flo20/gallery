@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ImageSearch from "./components/ImageSearch/ImageSearch";
 import ImageList from "./components/ImageList/ImageList";
 
-const api_key = "16628696-7ff6f3f64089c2a1c30e04a40";
+const api_key = "";
 
 class App extends Component {
   state = {
