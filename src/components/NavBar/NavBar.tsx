@@ -15,7 +15,7 @@ const NavBar = () => {
 	return (
 		<div className={styles.wrap}>
 			<div>
-				<Link to="/" id="logo">
+				<Link to="/" className={styles.logo}>
 					GALLERY
 				</Link>
 			</div>
