@@ -1,0 +1,59 @@
+.background {
+	position: relative;
+	width: 100%;
+	height: 30rem;
+	overflow: hidden;
+}
+
+.video {
+	position: absolute;
+	inset: 0;
+
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+	object-position: center;
+
+	z-index: 0;
+}
+
+.back_cont {
+	position: absolute;
+	inset: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background: linear-gradient(
+		to bottom,
+		rgba(44, 30, 35, 0.7),
+		rgba(65, 49, 61, 0.4)
+	);
+
+	z-index: 1;
+}
+
+.text {
+	position: relative;
+	color: #04264b;
+	z-index: 2;
+}
+
+// Tablet
+@media (max-width: 768px) {
+	.background {
+		height: 24rem;
+	}
+}
+
+// Mobile
+@media (max-width: 480px) {
+	.background {
+		height: 20rem;
+	}
+
+	.video {
+		object-position: center;
+	}
+}
