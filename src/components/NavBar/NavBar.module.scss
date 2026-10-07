@@ -51,7 +51,6 @@
 .links {
 	display: flex;
 	align-items: center;
-
 	padding: 0.75rem 1rem;
 
 	color: rgba(4, 38, 75, 0.72);
@@ -69,9 +68,19 @@
 
 	&:hover {
 		color: tomato;
-        text-decoration: none;
 		background-color: rgba(255, 99, 71, 0.06);
+        text-decoration: none;
 	}
+
+	&:focus-visible {
+		outline: 2px solid rgba(255, 99, 71, 0.35);
+		outline-offset: 2px;
+	}
+}
+
+.activeLink {
+	color: tomato;
+	font-weight: 700;
 }
 
 /* Sign in CTA */

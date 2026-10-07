@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { GrClose } from 'react-icons/gr'
 
@@ -27,34 +27,38 @@ const NavBar = () => {
 					openHamburger ? `${styles.head} ${styles.active}` : styles.head
 				}>
 				<div className={styles.navMenu}>
-					<Link
-						to="/explore"
-						className={styles.links}>
+					<NavLink
+						exact
+						to="/"
+						className={styles.links}
+						activeClassName={styles.activeLink}>
 						Explore
-					</Link>
+					</NavLink>
 				</div>
 
 				<div className={styles.navMenu}>
-					<Link
+					<NavLink
 						to="/upload"
-						className={styles.links}>
+						className={styles.links}
+						activeClassName={styles.activeLink}>
 						Upload
-					</Link>
+					</NavLink>
 				</div>
 
 				<div className={styles.navMenu}>
-					<Link
+					<NavLink
 						to="/myGallery"
-						className={styles.links}>
+						className={styles.links}
+						activeClassName={styles.activeLink}>
 						MyGallery
-					</Link>
+					</NavLink>
 				</div>
 
-				<Link
+				<NavLink
 					to="/signin"
 					className={styles.signIn}>
 					Sign In
-				</Link>
+				</NavLink>
 			</div>
 
 			{openHamburger ? (

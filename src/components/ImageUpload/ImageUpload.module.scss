@@ -1,0 +1,434 @@
+.page {
+	min-height: 100vh;
+	background:
+		radial-gradient(
+			circle at 10% 25%,
+			rgba(255, 99, 71, 0.07),
+			transparent 28rem
+		),
+		aliceblue;
+}
+
+.main {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	min-height: calc(100vh - 4.75rem);
+	padding: 5rem 2rem;
+
+	overflow: hidden;
+}
+
+.content {
+	position: relative;
+	z-index: 2;
+
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 1.1fr);
+	align-items: center;
+	gap: clamp(3rem, 5vw, 5rem);
+
+	width: 100%;
+	max-width: 78rem;
+	margin: 0 auto;
+}
+
+/* Intro */
+
+.intro {
+	max-width: 34rem;
+}
+
+.eyebrow {
+	display: inline-block;
+	margin-bottom: 1rem;
+
+	color: tomato;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+}
+
+.heading {
+	margin: 0;
+
+	color: #04264b;
+	font-family: 'Raleway', sans-serif;
+	font-size: clamp(2.5rem, 5vw, 4.25rem);
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	line-height: 1.05;
+
+	span {
+		color: tomato;
+	}
+}
+
+.description {
+	max-width: 30rem;
+	margin: 1.5rem 0 0;
+
+	color: rgba(4, 38, 75, 0.68);
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.1rem;
+	line-height: 1.7;
+}
+
+.quote {
+	position: relative;
+
+	margin: 2.5rem 0 0;
+	padding-left: 1.25rem;
+
+	border-left: 3px solid rgba(255, 99, 71, 0.6);
+
+	color: rgba(4, 38, 75, 0.58);
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.9rem;
+	font-style: italic;
+	line-height: 1.7;
+
+	cite {
+		display: block;
+		margin-top: 0.75rem;
+
+		color: #04264b;
+		font-style: normal;
+		font-weight: 600;
+	}
+}
+
+/* Upload card */
+
+.uploadCard {
+	width: 100%;
+	min-width: 0;
+	padding: 2.5rem;
+
+	box-sizing: border-box;
+
+	background-color: #fff;
+	border: 1px solid rgba(4, 38, 75, 0.07);
+	border-radius: 1.5rem;
+
+	box-shadow:
+		0 20px 50px rgba(4, 38, 75, 0.1),
+		0 4px 12px rgba(4, 38, 75, 0.05);
+}
+
+.cardHeader {
+	margin-bottom: 2rem;
+
+	h2 {
+		margin: 0;
+
+		color: #04264b;
+		font-family: 'Raleway', sans-serif;
+		font-size: 1.6rem;
+		font-weight: 700;
+	}
+
+	p {
+		margin: 0.5rem 0 0;
+
+		color: rgba(4, 38, 75, 0.55);
+		font-family: 'Raleway', sans-serif;
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+}
+
+/* Form */
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+
+	width: 100%;
+	min-width: 0;
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	width: 100%;
+	min-width: 0;
+
+	input {
+		display: block;
+		width: 100%;
+		height: 3.25rem;
+		padding: 0 1rem;
+
+		box-sizing: border-box;
+
+		background-color: #f6f8fb;
+		border: 1px solid rgba(4, 38, 75, 0.12);
+		border-radius: 0.65rem;
+		outline: none;
+
+		color: #04264b;
+		font-family: 'Raleway', sans-serif;
+		font-size: 0.95rem;
+
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease,
+			background-color 0.2s ease;
+
+		&::placeholder {
+			color: rgba(4, 38, 75, 0.35);
+		}
+
+		&:hover {
+			border-color: rgba(4, 38, 75, 0.25);
+		}
+
+		&:focus {
+			background-color: #fff;
+			border-color: tomato;
+			box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.12);
+		}
+	}
+}
+.hint {
+	color: rgba(4, 38, 75, 0.45);
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.75rem;
+}
+
+/* Button */
+
+.uploadButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	min-height: 3.4rem;
+	margin-top: 0.5rem;
+	padding: 0.8rem 1.5rem;
+
+	background-color: tomato;
+	border: none;
+	border-radius: 999px;
+
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	transition:
+		background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.15s ease;
+
+	&:hover {
+		background-color: #e84f35;
+		box-shadow: 0 6px 18px rgba(232, 79, 53, 0.25);
+	}
+
+	&:active {
+		transform: scale(0.98);
+	}
+
+	&:focus-visible {
+		outline: 3px solid rgba(255, 99, 71, 0.3);
+		outline-offset: 3px;
+	}
+}
+
+/* Existing decorative artwork */
+
+.mailLeft,
+.mailRight,
+.swirlLeft,
+.swirlRight {
+	position: absolute;
+	z-index: 1;
+
+	pointer-events: none;
+	user-select: none;
+}
+
+.mailLeft {
+	top: 15%;
+	left: 3%;
+	width: 5rem;
+}
+
+.mailRight {
+	right: 3%;
+	bottom: 12%;
+
+	width: 4rem;
+	transform: rotate(180deg);
+}
+
+.swirlLeft {
+	bottom: -2rem;
+	left: 4%;
+
+	width: 10rem;
+	transform: rotate(180deg);
+
+	opacity: 0.65;
+}
+
+.swirlRight {
+	top: 8%;
+	right: -2rem;
+
+	height: 14rem;
+	transform: rotate(270deg);
+
+	opacity: 0.65;
+}
+
+@media (max-width: 1024px) {
+	.main {
+		padding: 4rem 2rem;
+	}
+
+	.content {
+		grid-template-columns: 1fr;
+		gap: 3.5rem;
+
+		max-width: 40rem;
+	}
+
+	.intro {
+		max-width: 100%;
+		text-align: center;
+	}
+
+	.description {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.quote {
+		max-width: 32rem;
+		margin-right: auto;
+		margin-left: auto;
+
+		text-align: left;
+	}
+
+	.mailLeft,
+	.mailRight {
+		opacity: 0.45;
+	}
+
+	.swirlLeft,
+	.swirlRight {
+		opacity: 0.3;
+	}
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+	.main {
+		padding: 4rem 2rem;
+	}
+
+	.content {
+		grid-template-columns: 1fr;
+		gap: 3.5rem;
+
+		max-width: 38rem;
+	}
+
+	.intro {
+		max-width: 100%;
+		text-align: center;
+	}
+
+	.description {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.quote {
+		max-width: 32rem;
+		margin-right: auto;
+		margin-left: auto;
+
+		text-align: left;
+	}
+
+	.mailLeft,
+	.mailRight {
+		opacity: 0.45;
+	}
+
+	.swirlLeft,
+	.swirlRight {
+		opacity: 0.3;
+	}
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+	.main {
+		align-items: flex-start;
+		min-height: auto;
+		padding: 3rem 1rem 4rem;
+	}
+
+	.content {
+		gap: 2.5rem;
+	}
+
+	.eyebrow {
+		font-size: 0.7rem;
+	}
+
+	.heading {
+		font-size: 2.4rem;
+	}
+
+	.description {
+		margin-top: 1rem;
+		font-size: 1rem;
+	}
+
+	.quote {
+		margin-top: 2rem;
+		font-size: 0.8rem;
+	}
+
+	.uploadCard {
+		padding: 1.5rem;
+		border-radius: 1.25rem;
+	}
+
+	.cardHeader {
+		margin-bottom: 1.5rem;
+
+		h2 {
+			font-size: 1.4rem;
+		}
+	}
+
+	.mailLeft,
+	.mailRight {
+		width: 3rem;
+	}
+
+	.swirlLeft,
+	.swirlRight {
+		display: none;
+	}
+}
