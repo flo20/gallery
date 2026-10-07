@@ -1,17 +1,31 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import Nature from '../Video/nature.mp4'
 
 import styles from './ImageBackground.module.scss'
 
-const ImageBackground = () => {
+type ImageBackgroundProps = {
+	children?: ReactNode
+}
+
+const ImageBackground = ({ children }: ImageBackgroundProps) => {
 	return (
-		<div className={styles.background}>
-			<video className={styles.video} autoPlay loop muted playsInline>
-				<source src={Nature} type="video/mp4" />
+		<section className={styles.background}>
+			<video
+				className={styles.video}
+				autoPlay
+				loop
+				muted
+				playsInline>
+				<source
+					src={Nature}
+					type="video/mp4"
+				/>
 			</video>
 
-			<div className={styles.back_cont} />
-		</div>
+			<div className={styles.overlay} />
+
+			<div className={styles.content}>{children}</div>
+		</section>
 	)
 }
 

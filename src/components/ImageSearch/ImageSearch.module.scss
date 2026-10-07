@@ -1,0 +1,249 @@
+.heroContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	width: 100%;
+	padding: 4rem 2rem;
+
+	text-align: center;
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+}
+
+/* Heading */
+
+.heading {
+	margin: 0;
+
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+/* Description */
+
+.description {
+	margin: 1rem 0 0;
+
+	color: #fff;
+	font-size: 1.25rem;
+	line-height: 1.5;
+}
+
+/* Search */
+
+.imageSearch {
+	width: 100%;
+	max-width: 52rem;
+	margin: 2.5rem auto 0;
+	padding: 0 1rem;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 999px;
+
+	box-shadow:
+		0 8px 30px rgba(0, 0, 0, 0.15),
+		0 2px 8px rgba(0, 0, 0, 0.08);
+
+	transition: box-shadow 0.2s ease;
+
+	&:focus-within {
+		box-shadow:
+			0 10px 35px rgba(0, 0, 0, 0.2),
+			0 0 0 3px rgba(255, 255, 255, 0.25);
+	}
+}
+
+/* Search input */
+
+.inputWrapper {
+	display: flex;
+	align-items: center;
+	flex: 1;
+
+	min-width: 0;
+	padding-left: 1.25rem;
+
+	input {
+		flex: 1;
+
+		width: 100%;
+		min-width: 0;
+		padding: 0 1rem;
+
+		background: transparent;
+		border: none;
+		outline: none;
+
+		color: #04264b;
+		font-family: 'Raleway', sans-serif;
+		font-size: 1.05rem;
+		font-weight: 400;
+
+		&::placeholder {
+			color: rgba(4, 38, 75, 0.55);
+		}
+	}
+}
+
+.searchIcon {
+	flex-shrink: 0;
+
+	width: 1.5rem;
+	height: 1.5rem;
+
+	color: rgba(4, 38, 75, 0.7);
+}
+
+/* Search button */
+
+.searchButton {
+	flex-shrink: 0;
+
+	min-width: 8rem;
+	height: 3rem;
+
+	background-color: tomato;
+	border: none;
+	border-radius: 999px;
+
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	transition:
+		background-color 0.2s ease,
+		transform 0.15s ease,
+		box-shadow 0.2s ease;
+
+	&:hover {
+		background-color: #e84f35;
+		box-shadow: 0 5px 15px rgba(232, 79, 53, 0.3);
+	}
+
+	&:active {
+		transform: scale(0.97);
+	}
+
+	&:focus-visible {
+		outline: 3px solid rgba(255, 99, 71, 0.35);
+		outline-offset: 3px;
+	}
+}
+
+/* Additional information */
+
+.capture {
+	margin-top: 4rem;
+
+	color: rgba(255, 255, 255, 0.75);
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.25rem;
+	font-weight: 400;
+	line-height: 1.6;
+	text-align: center;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+	.heroContent {
+		padding: 3rem 1.5rem;
+	}
+
+	.heading {
+		font-size: 2.25rem;
+	}
+
+	.description {
+		font-size: 1.1rem;
+	}
+
+	.imageSearch {
+		max-width: 38rem;
+		margin-top: 2rem;
+	}
+
+	.inputWrapper {
+		padding-left: 1rem;
+
+		input {
+			font-size: 1rem;
+		}
+	}
+
+	.searchButton {
+		min-width: 7rem;
+		padding: 0 1.25rem;
+	}
+
+	.capture {
+		margin-top: 3rem;
+		font-size: 1.1rem;
+	}
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+	.heroContent {
+		padding: 2.5rem 1rem;
+	}
+
+	.heading {
+		font-size: 1.8rem;
+	}
+
+	.description {
+		font-size: 1rem;
+	}
+
+	.imageSearch {
+		margin-top: 1.75rem;
+		padding: 0;
+	}
+
+	.form {
+		padding: 0.4rem;
+	}
+
+	.inputWrapper {
+		padding-left: 0.75rem;
+
+		input {
+			height: 3.25rem;
+			padding: 0 0.65rem;
+			font-size: 0.9rem;
+		}
+	}
+
+	.searchIcon {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	.searchButton {
+		min-width: auto;
+		height: 3.25rem;
+		padding: 0 1.25rem;
+
+		font-size: 0.9rem;
+	}
+
+	.capture {
+		margin-top: 2.5rem;
+		font-size: 1rem;
+	}
+}

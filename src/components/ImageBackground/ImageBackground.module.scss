@@ -1,7 +1,10 @@
 .background {
 	position: relative;
+    display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
-	height: 30rem;
+	min-height: 32rem;
 	overflow: hidden;
 }
 
@@ -18,13 +21,9 @@
 	z-index: 0;
 }
 
-.back_cont {
+.overlay {
 	position: absolute;
 	inset: 0;
-
-	width: 100%;
-	height: 100%;
-
 	background: linear-gradient(
 		to bottom,
 		rgba(44, 30, 35, 0.7),
@@ -34,26 +33,26 @@
 	z-index: 1;
 }
 
-.text {
+.content {
 	position: relative;
-	color: #04264b;
+	width: 100%;
 	z-index: 2;
 }
 
 // Tablet
 @media (max-width: 768px) {
 	.background {
-		height: 24rem;
+		min-height: 28rem;
 	}
 }
 
 // Mobile
 @media (max-width: 480px) {
 	.background {
-		height: 20rem;
+		min-height: 26rem;
 	}
 
-	.video {
-		object-position: center;
-	}
+	// .video {
+	// 	object-position: center;
+	// }
 }
