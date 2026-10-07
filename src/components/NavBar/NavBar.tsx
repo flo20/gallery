@@ -15,7 +15,9 @@ const NavBar = () => {
 	return (
 		<div className={styles.wrap}>
 			<div>
-				<Link to="/" className={styles.logo}>
+				<Link
+					to="/"
+					className={styles.logo}>
 					GALLERY
 				</Link>
 			</div>
@@ -25,30 +27,41 @@ const NavBar = () => {
 					openHamburger ? `${styles.head} ${styles.active}` : styles.head
 				}>
 				<div className={styles.navMenu}>
-					<Link to="/explore" className={styles.links}>
+					<Link
+						to="/explore"
+						className={styles.links}>
 						Explore
 					</Link>
 				</div>
 
 				<div className={styles.navMenu}>
-					<Link to="/upload" className={styles.links}>
+					<Link
+						to="/upload"
+						className={styles.links}>
 						Upload
 					</Link>
 				</div>
 
 				<div className={styles.navMenu}>
-					<Link to="/myGallery" className={styles.links}>
+					<Link
+						to="/myGallery"
+						className={styles.links}>
 						MyGallery
 					</Link>
 				</div>
 
-				<div className={styles.navMenu}>
-					<Link to="/signin">Sign In</Link>
-				</div>
+				<Link
+					to="/signin"
+					className={styles.signIn}>
+					Sign In
+				</Link>
 			</div>
 
 			{openHamburger ? (
-				<GrClose className={styles.hamburgerMenu} onClick={handleToggle} />
+				<GrClose
+					className={styles.hamburgerMenu}
+					onClick={handleToggle}
+				/>
 			) : (
 				<GiHamburgerMenu
 					className={styles.hamburgerMenu}
