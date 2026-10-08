@@ -1,0 +1,166 @@
+.page {
+	min-height: 100vh;
+	background-color: #fbfaf7;
+}
+
+.main {
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 4.5rem 3rem 6rem;
+}
+
+/* Page header */
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 3rem;
+
+	width: 100%;
+}
+
+.titleGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.eyebrow {
+	margin-bottom: 1rem;
+
+	color: tomato;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+.heading {
+	margin: 0;
+
+	color: #04264b;
+	font-family: 'Raleway', sans-serif;
+	font-size: clamp(3rem, 6vw, 5rem);
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+.description {
+	max-width: 32rem;
+	margin: 1.25rem 0 0;
+
+	color: rgba(4, 38, 75, 0.6);
+	font-family: 'Raleway', sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+/* Add photo CTA */
+
+.addButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+
+	min-width: 9rem;
+	min-height: 3.4rem;
+	padding: 0.8rem 1.75rem;
+
+	background-color: tomato;
+	border-radius: 999px;
+
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+
+	transition:
+		background-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.15s ease;
+
+	&:hover {
+		background-color: #e84f35;
+		box-shadow: 0 6px 18px rgba(232, 79, 53, 0.25);
+        color: #fff;
+        text-decoration: none;
+	}
+
+	&:active {
+		transform: scale(0.98);
+	}
+
+	&:focus-visible {
+		outline: 3px solid rgba(255, 99, 71, 0.3);
+		outline-offset: 3px;
+	}
+}
+
+/* Gallery content */
+
+.gallery {
+	width: 100%;
+	margin-top: 5rem;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+	.main {
+		padding: 3.5rem 2rem 5rem;
+	}
+
+	.header {
+		gap: 2rem;
+	}
+
+	.heading {
+		font-size: clamp(3rem, 8vw, 4.5rem);
+	}
+
+	.gallery {
+		margin-top: 4rem;
+	}
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+	.main {
+		padding: 3rem 1rem 4rem;
+	}
+
+	.header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2rem;
+	}
+
+	.eyebrow {
+		margin-bottom: 0.75rem;
+		font-size: 0.7rem;
+	}
+
+	.heading {
+		font-size: 3rem;
+	}
+
+	.description {
+		margin-top: 1rem;
+		font-size: 0.95rem;
+	}
+
+	.addButton {
+		width: 100%;
+	}
+
+	.gallery {
+		margin-top: 3rem;
+	}
+}
