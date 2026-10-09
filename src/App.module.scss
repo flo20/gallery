@@ -1,0 +1,210 @@
+
+.page {
+	min-height: 100vh;
+	background-color: #fbfaf7;
+}
+
+// Main content below the hero banner
+.main {
+	width: 100%;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: 5rem 3rem 6rem;
+	box-sizing: border-box;
+}
+
+// Explore heading and description
+.sectionHeader {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 2rem;
+	margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+	display: block;
+	margin-bottom: 0.75rem;
+
+	color: #ff6347;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+.heading {
+	margin: 0;
+
+	color: #04264b;
+	font-family: 'Raleway', sans-serif;
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	overflow-wrap: anywhere;
+}
+
+.description {
+	margin: 0.75rem 0 0;
+
+	color: rgba(4, 38, 75, 0.6);
+	font-family: 'Raleway', sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+// Uploaded images
+.imageGrid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.5rem;
+	width: 100%;
+}
+
+// Loading, error and empty states
+.status,
+.emptyState {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	min-height: 20rem;
+	padding: 3rem 1.5rem;
+	box-sizing: border-box;
+
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+}
+
+.status {
+	color: rgba(4, 38, 75, 0.65);
+	font-size: 1rem;
+}
+
+.emptyState {
+	h3 {
+		margin: 0;
+
+		color: #04264b;
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+	}
+
+	p {
+		max-width: 30rem;
+		margin: 1rem 0 0;
+
+		color: rgba(4, 38, 75, 0.6);
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+}
+
+// Upload, retry and view-all buttons
+.actionButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	min-height: 3.25rem;
+	margin-top: 2rem;
+	padding: 0.85rem 1.75rem;
+
+	background-color: #ff6347;
+	border: none;
+	border-radius: 999px;
+
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.95rem;
+	font-weight: 700;
+	text-decoration: none;
+
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		transform 0.2s ease;
+
+	&:hover {
+		background-color: #e84f35;
+		transform: translateY(-2px);
+	}
+
+	&:focus-visible {
+		outline: 3px solid rgba(255, 99, 71, 0.35);
+		outline-offset: 3px;
+	}
+}
+
+// Clear search button
+.clearButton {
+	padding: 0.65rem 1rem;
+
+	background: transparent;
+	border: 1px solid rgba(4, 38, 75, 0.15);
+	border-radius: 999px;
+
+	color: #04264b;
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.9rem;
+	font-weight: 600;
+
+	cursor: pointer;
+	transition:
+		border-color 0.2s ease,
+		color 0.2s ease;
+
+	&:hover {
+		border-color: #ff6347;
+		color: #ff6347;
+	}
+
+	&:focus-visible {
+		outline: 3px solid rgba(255, 99, 71, 0.35);
+		outline-offset: 3px;
+	}
+}
+
+// Tablet
+@media (max-width: 900px) {
+	.main {
+		padding: 4rem 2rem;
+	}
+
+	.imageGrid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+}
+
+// Mobile
+@media (max-width: 600px) {
+	.main {
+		padding: 3rem 1rem 4rem;
+	}
+
+	.sectionHeader {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
+		margin-bottom: 2rem;
+	}
+
+	.imageGrid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.emptyState {
+		min-height: 17rem;
+		padding: 2rem 1rem;
+	}
+
+	.actionButton {
+		width: 100%;
+		max-width: 18rem;
+		box-sizing: border-box;
+	}
+}

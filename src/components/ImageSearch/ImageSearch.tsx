@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
+import { FiSearch } from 'react-icons/fi'
+
 import NavBar from '../NavBar/NavBar'
 import ImageBackground from '../ImageBackground/ImageBackground'
-
-import { FiSearch } from 'react-icons/fi'
 
 import styles from './ImageSearch.module.scss'
 
 type ImageSearchProps = {
-	handleGetRequest: React.FormEventHandler<HTMLFormElement>
+	onSearch: (term: string) => void
+	loading: boolean
 }
 
-const ImageSearch = ({ handleGetRequest }: ImageSearchProps ) => {
+const ImageSearch = ({ onSearch, loading }: ImageSearchProps) => {
+	const [searchValue, setSearchValue] = useState('')
+
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		onSearch(searchValue.trim())
+	}
+
 	return (
 		<>
 			<NavBar />
@@ -20,39 +28,41 @@ const ImageSearch = ({ handleGetRequest }: ImageSearchProps ) => {
 					<h1 className={styles.heading}>Explore your imagination</h1>
 
 					<p className={styles.description}>
-						Browse through amazing images captured for you
+						Discover beautiful images shared by our community.
 					</p>
 
 					<div className={styles.imageSearch}>
 						<form
-							onSubmit={handleGetRequest}
-							className={styles.form}>
+							onSubmit={handleSubmit}
+							className={styles.form}
+							role="search">
 							<div className={styles.inputWrapper}>
 								<FiSearch
 									className={styles.searchIcon}
 									aria-hidden="true"
 								/>
+
 								<input
-									type="text"
-									autoComplete="off"
+									type="search"
 									name="searchValue"
-									placeholder="Search mountains, portraits, golden hour..."
+									autoComplete="off"
+									placeholder="Search by name or tags..."
+									aria-label="Search gallery images"
+									value={searchValue}
+									onChange={(event) => setSearchValue(event.target.value)}
 								/>
 							</div>
+
 							<button
+								type="submit"
 								className={styles.searchButton}
-								type="submit">
-								Search
+								disabled={loading}>
+								{loading ? 'Searching...' : 'Search'}
 							</button>
 						</form>
 					</div>
 
-					<div className={styles.capture}>
-						Home to millions of photo lovers,
-						<br />
-						Over 1.8 million+ high quality stock images shared by our talented
-						community.
-					</div>
+					<div className={styles.capture}>Find inspiration in every image.</div>
 				</div>
 			</ImageBackground>
 		</>

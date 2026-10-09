@@ -1,0 +1,86 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.links {
+  text-decoration: none;
+  color: #04264b94;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  padding: 1rem;
+}
+.links:hover {
+  border-bottom: 2px solid tomato;
+  color: tomato;
+  text-decoration: none;
+
+}
+#logo {
+  text-decoration: none;
+  font-size: 1.7rem;
+  color: #04264b;
+  margin-left: 5rem; 
+
+}
+
+.wrap {
+  display: flex;
+  height: 3.5rem;
+  justify-content: space-between;
+  align-items:center ;
+  top: 0;
+  width: 100%;
+  background: white;
+  box-shadow: -1px 2px 34px -13px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.hamburgerMenu{
+  display: none;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .head {
+    margin-left: 20rem;
+  }
+
+  .hamburgerMenu{
+    display: block;
+
+  }
+
+  .head{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+    position: absolute;
+    right: -100%;
+  }
+
+  .head.active{
+    right: 0;
+    transition: all 0.5s ease;
+  }
+
+  .navMenu{
+    margin: 1rem;
+  }
+
+ 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {
+  .head {
+    margin-left: 35rem;
+  }
+} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {
+  .head {
+    margin-left: 75rem;
+  }
+} */
