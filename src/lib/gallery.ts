@@ -1,5 +1,5 @@
 import { supabase } from './supabase'
-import type { GalleryImage } from '../types/gallery'
+import type { GalleryImage, NewGalleryImage } from '../types/gallery'
 
 export const getGalleryImages = async (
 	searchTerm = '',
@@ -32,7 +32,6 @@ export const getGalleryImages = async (
 	return (data ?? []) as GalleryImage[]
 }
 
-
 export const galleryHasUploads = async (): Promise<boolean> => {
 	const { count, error } = await supabase
 		.from('gallery')
@@ -41,4 +40,14 @@ export const galleryHasUploads = async (): Promise<boolean> => {
 	if (error) throw error
 
 	return (count ?? 0) > 0
+}
+
+export const uploadGalleryImage = async (
+	imageData: NewGalleryImage,
+): Promise<void> => {
+	const { error } = await supabase.from('gallery').insert([imageData])
+
+	if (error) {
+		throw new Error(error.message)
+	}
 }

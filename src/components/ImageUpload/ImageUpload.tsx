@@ -2,6 +2,8 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import results from '../../axios-gallery'
 import NavBar from '../NavBar/NavBar'
 
+import { uploadGalleryImage } from '../../lib/gallery'
+
 import styles from './ImageUpload.module.scss'
 
 type FormData = {
@@ -11,6 +13,9 @@ type FormData = {
 }
 
 const ImageUpload = () => {
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [message, setMessage] = useState('')
+	const [errorMessage, setErrorMessage] = useState('')
 	const [formData, setFormData] = useState<FormData>({
 		name: '',
 		image: '',
@@ -26,13 +31,23 @@ const ImageUpload = () => {
 		}))
 	}
 
-	const postDataHandler = async (event: FormEvent<HTMLFormElement>) => {
+	const postDataHandler = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 
-		try {
-			await results.post('./gallery.json', formData)
+		if (isSubmitting) return
 
-			window.alert('Your image has been saved in My Gallery.')
+		setIsSubmitting(true)
+		setMessage('')
+		setErrorMessage('')
+
+		try {
+			await uploadGalleryImage({
+				name: formData.name.trim(),
+				image: formData.image.trim(),
+				tags: formData.tags.trim() || null,
+			})
+
+			setMessage('Your image has been uploaded successfully!')
 
 			setFormData({
 				name: '',
@@ -40,8 +55,15 @@ const ImageUpload = () => {
 				tags: '',
 			})
 		} catch (error) {
-			console.error('Unable to upload image:', error)
-			window.alert('We could not save your image. Please try again.')
+			console.error('Upload failed:', error)
+
+			setErrorMessage(
+				error instanceof Error
+					? error.message
+					: 'Unable to upload image. Please try again.',
+			)
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -157,9 +179,12 @@ const ImageUpload = () => {
 
 							<button
 								type="submit"
+								disabled={isSubmitting}
 								className={styles.uploadButton}>
-								Upload image
+								{isSubmitting ? 'Uploading...' : 'Upload image'}
 							</button>
+							{message && <p role="status">{message}</p>}
+							{errorMessage && <p role="alert">{errorMessage}</p>}
 						</form>
 					</div>
 				</section>

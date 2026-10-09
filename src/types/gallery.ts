@@ -5,3 +5,9 @@ export type GalleryImage = {
 	tags: string | null
 	created_at: string
 }
+
+export type NewGalleryImage = {
+	name: string
+	image: string
+	tags: string | null
+}
