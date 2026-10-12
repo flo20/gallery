@@ -1,8 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-import results from '../../axios-gallery'
+import { uploadGalleryImage } from '../../lib/gallery'
 import NavBar from '../NavBar/NavBar'
 
-import { uploadGalleryImage } from '../../lib/gallery'
 
 import styles from './ImageUpload.module.scss'
 

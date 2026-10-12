@@ -1,8 +1,0 @@
-.display_wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 0.2fr);
-  grid-gap: 1rem;
-  justify-content: center;
-  align-content: center;
-  margin-bottom: 5rem;
-}
