@@ -1,0 +1,151 @@
+
+.page {
+	min-height: 100vh;
+	background: #fbfaf7;
+}
+
+.main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: calc(100vh - 80px);
+	padding: 3rem 1.5rem;
+}
+
+.card {
+	width: 100%;
+	max-width: 27rem;
+	padding: 2.5rem;
+	box-sizing: border-box;
+
+	background: #fff;
+	border: 1px solid rgba(4, 38, 75, 0.08);
+	border-radius: 1.25rem;
+	box-shadow: 0 12px 40px rgba(4, 38, 75, 0.06);
+
+	font-family: 'Raleway', sans-serif;
+
+	h1 {
+		margin: 0.75rem 0 0;
+		color: #04264b;
+		font-size: clamp(1.75rem, 4vw, 2.2rem);
+		letter-spacing: -0.03em;
+	}
+}
+
+.eyebrow {
+	color: #ff6347;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+}
+
+.description {
+	margin: 0.75rem 0 0;
+	color: #64748b;
+	font-size: 0.9rem;
+	line-height: 1.6;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	margin-top: 2rem;
+}
+
+.field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	label {
+		color: #04264b;
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	input {
+		width: 100%;
+		min-height: 3rem;
+		padding: 0.75rem 1rem;
+		box-sizing: border-box;
+
+		border: 1px solid #d9e0e8;
+		border-radius: 0.65rem;
+		background: #fff;
+
+		font: inherit;
+		font-size: 0.9rem;
+
+		&:focus {
+			outline: 2px solid rgba(255, 99, 71, 0.25);
+			border-color: #ff6347;
+		}
+	}
+}
+
+.submitButton {
+	min-height: 3.25rem;
+	padding: 0.85rem 1.5rem;
+
+	background: #ff6347;
+	border: none;
+	border-radius: 999px;
+
+	color: white;
+	font: inherit;
+	font-size: 0.95rem;
+	font-weight: 700;
+	cursor: pointer;
+
+	&:hover:not(:disabled) {
+		background: #e84f35;
+	}
+
+	&:disabled {
+		opacity: 0.65;
+		cursor: not-allowed;
+	}
+}
+
+.error {
+	margin: 0;
+	color: #b42318;
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.success {
+	margin: 0;
+	color: #18794e;
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.footer {
+	margin: 1.75rem 0 0;
+	color: #64748b;
+	text-align: center;
+	font-size: 0.85rem;
+
+	a {
+		color: #ff6347;
+		font-weight: 700;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.main {
+		padding: 2rem 1rem;
+	}
+
+	.card {
+		padding: 1.75rem 1.25rem;
+	}
+}
