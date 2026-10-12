@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react'
 import { uploadGalleryImage } from '../../lib/gallery'
+import { validateImageUrl } from '../../lib/ImageValidation'
 import NavBar from '../NavBar/NavBar'
-import { supabase } from '../../lib/supabase'
 
 import styles from './ImageUpload.module.scss'
 
@@ -15,6 +15,7 @@ const ImageUpload = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [message, setMessage] = useState('')
 	const [errorMessage, setErrorMessage] = useState('')
+	const [previewError, setPreviewError] = useState(false)
 	const [formData, setFormData] = useState<FormData>({
 		name: '',
 		image: '',
@@ -28,6 +29,11 @@ const ImageUpload = () => {
 			...previousData,
 			[name]: value,
 		}))
+
+		if (name === 'image') {
+			setPreviewError(false)
+			setErrorMessage('')
+		}
 	}
 
 	const postDataHandler = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -40,6 +46,15 @@ const ImageUpload = () => {
 		setErrorMessage('')
 
 		try {
+			const imageUrl = formData.image.trim()
+
+			// Validate the image URL before saving to Supabase.
+			const validationError = await validateImageUrl(imageUrl)
+
+			if (validationError) {
+				throw new Error(validationError)
+			}
+
 			await uploadGalleryImage({
 				name: formData.name.trim(),
 				image: formData.image.trim(),
@@ -53,6 +68,7 @@ const ImageUpload = () => {
 				image: '',
 				tags: '',
 			})
+            setPreviewError(false)
 		} catch (error) {
 			console.error('Upload failed:', error)
 
@@ -65,6 +81,8 @@ const ImageUpload = () => {
 			setIsSubmitting(false)
 		}
 	}
+
+    const imageUrl = formData.image.trim()
 
 	return (
 		<div className={styles.page}>
@@ -175,6 +193,27 @@ const ImageUpload = () => {
 									Separate multiple tags with commas.
 								</span>
 							</div>
+
+							{/* Image preview */}
+							{imageUrl && !previewError && (
+								<div className={styles.imagePreview}>
+									<img
+										key={imageUrl}
+										src={imageUrl}
+										alt="Preview"
+										onError={() => setPreviewError(true)}
+									/>
+								</div>
+							)}
+
+							{previewError && (
+								<p
+									className={styles.previewWarning}
+									role="alert">
+									This link doesn't display an image. Please use a direct image
+									URL instead.
+								</p>
+							)}
 
 							<button
 								type="submit"
