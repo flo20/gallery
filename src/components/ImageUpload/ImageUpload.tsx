@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { uploadGalleryImage } from '../../lib/gallery'
 import NavBar from '../NavBar/NavBar'
-
+import { supabase } from '../../lib/supabase'
 
 import styles from './ImageUpload.module.scss'
 

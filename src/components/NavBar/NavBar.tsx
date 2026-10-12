@@ -71,7 +71,7 @@ const NavBar = () => {
 					<button
 						type="button"
 						onClick={handleSignOut}
-						className={styles.signButton}>
+						className={styles.signOut}>
 						Sign out
 					</button>
 				) : (

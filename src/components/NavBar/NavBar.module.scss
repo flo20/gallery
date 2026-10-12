@@ -89,7 +89,7 @@
 
 /* Sign in CTA */
 
-.signIn {
+.signIn, .signOut {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -100,6 +100,7 @@
 
 	background-color: tomato;
 	border-radius: 999px;
+    border: none;
 
 	color: #fff;
 	font-family: 'Raleway', sans-serif;
