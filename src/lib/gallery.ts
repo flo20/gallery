@@ -12,10 +12,11 @@ const ALLOWED_FILE_TYPES: Record<string, string> = {
 }
 
 // Upload an image file to Supabase Storage.
+
 export const uploadGalleryFile = async (
 	file: File,
 ): Promise<{ url: string; path: string }> => {
-	// 1. Validate MIME type.
+	// 1. Validate the file type.
 	const extension = ALLOWED_FILE_TYPES[file.type]
 
 	if (!extension) {
@@ -24,12 +25,12 @@ export const uploadGalleryFile = async (
 		)
 	}
 
-	// 2. Validate file size.
+	// 2. Validate the file size.
 	if (file.size > MAX_FILE_SIZE) {
 		throw new Error('Image exceeds the maximum file size of 5 MB.')
 	}
 
-	// 3. Verify that the user is authenticated.
+	// 3. Verify the authenticated user.
 	const {
 		data: { user },
 		error: authError,
@@ -39,16 +40,14 @@ export const uploadGalleryFile = async (
 		throw new Error('Please sign in to upload an image.')
 	}
 
-	// 4. Generate a unique filename in the user's folder.
-	const filename = `${Date.now()}-${Math.random()
-		.toString(36)
-		.slice(2)}.${extension}`
+	// 4. Generate a unique filename.
+	const filename = `${crypto.randomUUID()}.${extension}`
 
+	// Each user uploads into their own folder.
 	const path = `${user.id}/${filename}`
 
-	// 5. Upload the file to Supabase Storage.
+	// 5. Upload to Supabase Storage.
 	const { data, error } = await supabase.storage
-
 		.from(STORAGE_BUCKET)
 		.upload(path, file, {
 			contentType: file.type,
@@ -56,10 +55,11 @@ export const uploadGalleryFile = async (
 		})
 
 	if (error) {
+		console.error('Supabase Storage upload failed:', error)
 		throw new Error(error.message)
 	}
 
-	// 6. Retrieve the public URL.
+	// 6. Get the public image URL.
 	const { data: publicUrlData } = supabase.storage
 		.from(STORAGE_BUCKET)
 		.getPublicUrl(data.path)
