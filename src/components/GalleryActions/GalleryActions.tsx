@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import type { GalleryImage } from '../../types/gallery'
 import { removeGalleryImage, updateGalleryImage } from '../../lib/gallery'
@@ -146,66 +147,101 @@ const GalleryActions = ({ image, onChanged }: Props) => {
 				</button>
 			</div>
 
-			{modal && (
-				<div
-					className={styles.backdrop}
-					onMouseDown={(event) => {
-						if (event.target === event.currentTarget) {
-							closeModal()
-						}
-					}}>
+			{modal &&
+				createPortal(
 					<div
-						className={styles.modal}
-						role="dialog"
-						aria-modal="true"
-						aria-labelledby="gallery-modal-title">
-						<button
-							type="button"
-							className={styles.closeButton}
-							onClick={closeModal}
-							disabled={loading}
-							aria-label="Close dialog">
-							×
-						</button>
+						className={styles.backdrop}
+						onMouseDown={(event) => {
+							if (event.target === event.currentTarget) {
+								closeModal()
+							}
+						}}>
+						<div
+							className={styles.modal}
+							role="dialog"
+							aria-modal="true"
+							aria-labelledby="gallery-modal-title">
+							<button
+								type="button"
+								className={styles.closeButton}
+								onClick={closeModal}
+								disabled={loading}
+								aria-label="Close dialog">
+								×
+							</button>
 
-						{modal === 'edit' ? (
-							<>
-								<h2 id="gallery-modal-title">Edit photo</h2>
+							{modal === 'edit' ? (
+								<>
+									<h2 id="gallery-modal-title">Edit photo</h2>
 
-								<form
-									onSubmit={handleEdit}
-									className={styles.form}>
-									<label htmlFor={`name-${image.id}`}>Name</label>
-									<input
-										id={`name-${image.id}`}
-										type="text"
-										value={name}
-										onChange={(event) => setName(event.target.value)}
-										required
-										disabled={loading}
-										autoFocus
-									/>
+									<form
+										onSubmit={handleEdit}
+										className={styles.form}>
+										<label htmlFor={`name-${image.id}`}>Name</label>
+										<input
+											id={`name-${image.id}`}
+											type="text"
+											value={name}
+											onChange={(event) => setName(event.target.value)}
+											required
+											disabled={loading}
+											autoFocus
+										/>
 
-									<label htmlFor={`caption-${image.id}`}>Caption</label>
-									<textarea
-										id={`caption-${image.id}`}
-										value={caption}
-										onChange={(event) => setCaption(event.target.value)}
-										rows={3}
-										disabled={loading}
-									/>
+										<label htmlFor={`caption-${image.id}`}>Caption</label>
+										<textarea
+											id={`caption-${image.id}`}
+											value={caption}
+											onChange={(event) => setCaption(event.target.value)}
+											rows={3}
+											disabled={loading}
+										/>
 
-									<label htmlFor={`tags-${image.id}`}>
-										Tags (comma separated)
-									</label>
-									<input
-										id={`tags-${image.id}`}
-										type="text"
-										value={tags}
-										onChange={(event) => setTags(event.target.value)}
-										placeholder="nature, travel, photography"
-										disabled={loading}
-									/>
+										<label htmlFor={`tags-${image.id}`}>
+											Tags (comma separated)
+										</label>
+										<input
+											id={`tags-${image.id}`}
+											type="text"
+											value={tags}
+											onChange={(event) => setTags(event.target.value)}
+											placeholder="nature, travel, photography"
+											disabled={loading}
+										/>
+
+										{error && (
+											<p
+												className={styles.error}
+												role="alert">
+												{error}
+											</p>
+										)}
+
+										<div className={styles.footer}>
+											<button
+												type="button"
+												className={styles.cancelButton}
+												onClick={closeModal}
+												disabled={loading}>
+												Cancel
+											</button>
+
+											<button
+												type="submit"
+												className={styles.primaryButton}
+												disabled={loading}>
+												{loading ? 'Saving...' : 'Save changes'}
+											</button>
+										</div>
+									</form>
+								</>
+							) : (
+								<>
+									<h2 id="gallery-modal-title">Delete this photo?</h2>
+
+									<p className={styles.description}>
+										“{image.name}” will be removed permanently.
+									</p>
 
 									{error && (
 										<p
@@ -225,52 +261,19 @@ const GalleryActions = ({ image, onChanged }: Props) => {
 										</button>
 
 										<button
-											type="submit"
-											className={styles.primaryButton}
+											type="button"
+											className={styles.dangerButton}
+											onClick={handleDelete}
 											disabled={loading}>
-											{loading ? 'Saving...' : 'Save changes'}
+											{loading ? 'Deleting...' : 'Delete'}
 										</button>
 									</div>
-								</form>
-							</>
-						) : (
-							<>
-								<h2 id="gallery-modal-title">Delete this photo?</h2>
-
-								<p className={styles.description}>
-									“{image.name}” will be removed permanently.
-								</p>
-
-								{error && (
-									<p
-										className={styles.error}
-										role="alert">
-										{error}
-									</p>
-								)}
-
-								<div className={styles.footer}>
-									<button
-										type="button"
-										className={styles.cancelButton}
-										onClick={closeModal}
-										disabled={loading}>
-										Cancel
-									</button>
-
-									<button
-										type="button"
-										className={styles.dangerButton}
-										onClick={handleDelete}
-										disabled={loading}>
-										{loading ? 'Deleting...' : 'Delete'}
-									</button>
-								</div>
-							</>
-						)}
-					</div>
-				</div>
-			)}
+								</>
+							)}
+						</div>
+					</div>,
+					document.body,
+				)}
 		</>
 	)
 }
