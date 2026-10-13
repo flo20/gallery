@@ -86,7 +86,7 @@ export const getGalleryImages = async (
 
 	let query = supabase
 		.from('gallery')
-		.select('id, name, image, tags, created_at')
+		.select('id, name, image, tags, caption, user_id, created_at')
 		.order('created_at', { ascending: false })
 
 	if (term) {
@@ -123,9 +123,128 @@ export const galleryHasUploads = async (): Promise<boolean> => {
 export const uploadGalleryImage = async (
 	imageData: NewGalleryImage,
 ): Promise<void> => {
-	const { error } = await supabase.from('gallery').insert([imageData])
+	const {
+		data: { user },
+		error: authError,
+	} = await supabase.auth.getUser()
+
+	if (authError || !user) {
+		throw new Error('Please sign in to publish an image.')
+	}
+
+	const { error } = await supabase.from('gallery').insert([
+		{
+			...imageData,
+			user_id: user.id,
+		},
+	])
 
 	if (error) {
 		throw new Error(error.message)
+	}
+}
+
+export type GalleryImageChanges = {
+	name: string
+	caption: string | null
+	tags: string | null
+}
+
+export const updateGalleryImage = async (
+	id: string,
+	changes: GalleryImageChanges,
+): Promise<void> => {
+	const {
+		data: { user },
+		error: authError,
+	} = await supabase.auth.getUser()
+
+	if (authError || !user) {
+		throw new Error('Please sign in to edit a photo.')
+	}
+
+	const name = changes.name.trim()
+
+	if (!name) {
+		throw new Error('Photo name is required.')
+	}
+
+	const { data, error } = await supabase
+		.from('gallery')
+		.update({
+			name,
+			caption: changes.caption?.trim() || null,
+			tags: changes.tags?.trim() || null,
+		})
+		.eq('id', id)
+		.eq('user_id', user.id)
+		.select('id')
+		.maybeSingle()
+
+	if (error) throw new Error(error.message)
+
+	if (!data) {
+		throw new Error('Photo not found or you do not have permission to edit it.')
+	}
+}
+
+export const removeGalleryImage = async (
+	image: GalleryImage,
+): Promise<void> => {
+	const {
+		data: { user },
+		error: authError,
+	} = await supabase.auth.getUser()
+
+	if (authError || !user) {
+		throw new Error('Please sign in to delete a photo.')
+	}
+
+	// Delete the database record only if the user owns it.
+	const { data, error } = await supabase
+		.from('gallery')
+		.delete()
+		.eq('id', image.id)
+		.eq('user_id', user.id)
+		.select('id')
+		.maybeSingle()
+
+	if (error) throw new Error(error.message)
+
+	if (!data) {
+		throw new Error(
+			'Photo not found or you do not have permission to delete it.',
+		)
+	}
+
+	// External image links must never be deleted from Storage.
+	// For files hosted in our public bucket, derive the object path.
+	const marker = `/storage/v1/object/public/${STORAGE_BUCKET}/`
+
+	try {
+		const imageUrl = new URL(image.image)
+		const expectedOrigin = new URL(process.env.REACT_APP_SUPABASE_URL!).origin
+
+		if (
+			imageUrl.origin !== expectedOrigin ||
+			!imageUrl.pathname.startsWith(marker)
+		) {
+			return
+		}
+
+		const encodedPath = imageUrl.pathname.slice(marker.length)
+		const storagePath = decodeURIComponent(encodedPath)
+
+		// Only remove files from this user's folder.
+		if (!storagePath.startsWith(`${user.id}/`)) {
+			return
+		}
+
+		await deleteGalleryFile(storagePath)
+	} catch (cleanupError) {
+		// The gallery record has already been deleted.
+		// Log Storage cleanup failures without claiming
+		// the database deletion failed.
+		console.error('Photo deleted, but Storage cleanup failed:', cleanupError)
 	}
 }

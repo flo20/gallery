@@ -4,6 +4,8 @@ export type GalleryImage = {
 	image: string
 	tags: string | null
 	created_at: string
+	caption: string | null
+	user_id: string | null
 }
 
 export type NewGalleryImage = {

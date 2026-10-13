@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
+import type { GalleryImage } from '../../types/gallery'
+import GalleryActions from '../GalleryActions/GalleryActions'
+
 import styles from './ImageDisplay.module.scss'
 
 type ImageDisplayProps = {
-	name: string
-	image: string
-	tags?: string | null
+	image: GalleryImage
+	canManage?: boolean
+	onChanged?: () => Promise<void>
 }
 
-const ImageDisplay = ({ name, image, tags }: ImageDisplayProps) => {
+const ImageDisplay = ({
+	image,
+	canManage = false,
+	onChanged,
+}: ImageDisplayProps) => {
 	const [imageError, setImageError] = useState(false)
 
-	const tagList = (tags ?? '')
+	const tagList = (image.tags ?? '')
 		.split(',')
 		.map((tag) => tag.trim())
 		.filter(Boolean)
@@ -24,17 +31,25 @@ const ImageDisplay = ({ name, image, tags }: ImageDisplayProps) => {
 					</div>
 				) : (
 					<img
-						src={image}
-						alt={name}
+						src={image.image}
+						alt={image.name}
 						className={styles.image}
 						loading="lazy"
 						onError={() => setImageError(true)}
 					/>
 				)}
+				{canManage && onChanged && (
+					<GalleryActions
+						image={image}
+						onChanged={onChanged}
+					/>
+				)}
 			</div>
 
 			<div className={styles.details}>
-				<h3 className={styles.name}>{name}</h3>
+				<h3 className={styles.name}>{image.name}</h3>
+
+				{image.caption && <p className={styles.caption}>{image.caption}</p>}
 
 				{tagList.length > 0 && (
 					<div className={styles.tags}>

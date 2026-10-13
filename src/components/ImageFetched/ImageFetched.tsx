@@ -1,7 +1,6 @@
-
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import { supabase } from '../../lib/supabase'
 import { getGalleryImages } from '../../lib/gallery'
 import type { GalleryImage } from '../../types/gallery'
 
@@ -11,29 +10,36 @@ import styles from './ImageFetched.module.scss'
 
 const ImageFetched = () => {
 	const [images, setImages] = useState<GalleryImage[]>([])
+	const [userId, setUserId] = useState<string | null>(null)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 
-	useEffect(() => {
-		let mounted = true
+	const refreshGallery = useCallback(async (): Promise<void> => {
+		const results = await getGalleryImages()
+		setImages(results)
+	}, [])
 
-		const fetchImages = async () => {
+	useEffect(() => {
+        let mounted = true
+		const loadGallery = async () => {
 			try {
 				setLoading(true)
 				setError(null)
 
-				const results = await getGalleryImages()
+				const [results, authResult] = await Promise.all([
+					getGalleryImages(),
+					supabase.auth.getUser(),
+				])
 
 				if (mounted) {
 					setImages(results)
+					setUserId(authResult.data.user?.id ?? null)
 				}
 			} catch (err) {
 				console.error('Failed to fetch images:', err)
 
 				if (mounted) {
-					setError(
-						'Unable to load your gallery. Please try again.'
-					)
+					setError('Unable to load your gallery. Please try again.')
 				}
 			} finally {
 				if (mounted) {
@@ -42,7 +48,7 @@ const ImageFetched = () => {
 			}
 		}
 
-		fetchImages()
+		loadGallery()
 
 		return () => {
 			mounted = false
@@ -51,7 +57,9 @@ const ImageFetched = () => {
 
 	if (loading) {
 		return (
-			<div className={styles.status} role="status">
+			<div
+				className={styles.status}
+				role="status">
 				Loading your gallery...
 			</div>
 		)
@@ -59,7 +67,9 @@ const ImageFetched = () => {
 
 	if (error) {
 		return (
-			<div className={styles.status} role="alert">
+			<div
+				className={styles.status}
+				role="alert">
 				{error}
 			</div>
 		)
@@ -71,11 +81,13 @@ const ImageFetched = () => {
 				<h2>Your gallery is empty</h2>
 
 				<p>
-					No images have been uploaded yet.
-					Be the first to share something beautiful.
+					No images have been uploaded yet. Be the first to share something
+					beautiful.
 				</p>
 
-				<Link to="/upload" className={styles.emptyButton}>
+				<Link
+					to="/upload"
+					className={styles.emptyButton}>
 					Upload your first photo
 				</Link>
 			</div>
@@ -87,9 +99,9 @@ const ImageFetched = () => {
 			{images.map((item) => (
 				<ImageDisplay
 					key={item.id}
-					name={item.name}
-					image={item.image}
-					tags={item.tags ?? ''}
+					image={item}
+					canManage={Boolean(userId) && item.user_id === userId}
+					onChanged={refreshGallery}
 				/>
 			))}
 		</div>

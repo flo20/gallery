@@ -135,9 +135,7 @@ const App = () => {
 						{images.map((image) => (
 							<ImageDisplay
 								key={image.id}
-								name={image.name}
-								image={image.image}
-								tags={image.tags ?? ''}
+								image={image}
 							/>
 						))}
 					</div>
