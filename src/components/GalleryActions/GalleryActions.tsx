@@ -57,34 +57,75 @@ const GalleryActions = ({ image, onChanged }: Props) => {
 		}
 	}
 
-	const handleEdit = async (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault()
+    const handleEdit = async (event: FormEvent<HTMLFormElement>) => {
+			event.preventDefault()
 
-		if (!name.trim()) {
-			setError('Please enter a photo name.')
-			return
+			if (!name.trim()) {
+				setError('Please enter a photo name.')
+				return
+			}
+
+			setLoading(true)
+			setError('')
+
+			try {
+				console.log('[Gallery] Starting photo update')
+
+				await updateGalleryImage(image.id, {
+					name,
+					caption,
+					tags,
+				})
+
+				console.log('[Gallery] Database update succeeded')
+
+				setModal(null)
+
+				try {
+					await onChanged()
+					console.log('[Gallery] Gallery refresh succeeded')
+				} catch (refreshError) {
+					console.error('[Gallery] Refresh failed:', refreshError)
+				}
+			} catch (err) {
+				console.error('[Gallery] Photo update failed:', err)
+
+				setError(
+					err instanceof Error ? err.message : 'Unable to update the photo.',
+				)
+			} finally {
+				setLoading(false)
+			}
 		}
 
-		setLoading(true)
-		setError('')
+	// const handleEdit = async (event: FormEvent<HTMLFormElement>) => {
+	// 	event.preventDefault()
 
-		try {
-			await updateGalleryImage(image.id, {
-				name,
-				caption,
-				tags,
-			})
+	// 	if (!name.trim()) {
+	// 		setError('Please enter a photo name.')
+	// 		return
+	// 	}
 
-			setModal(null)
-			await onChanged()
-		} catch (err) {
-			setError(
-				err instanceof Error ? err.message : 'Unable to update the photo.',
-			)
-		} finally {
-			setLoading(false)
-		}
-	}
+	// 	setLoading(true)
+	// 	setError('')
+
+	// 	try {
+	// 		await updateGalleryImage(image.id, {
+	// 			name,
+	// 			caption,
+	// 			tags,
+	// 		})
+
+	// 		setModal(null)
+	// 		await onChanged()
+	// 	} catch (err) {
+	// 		setError(
+	// 			err instanceof Error ? err.message : 'Unable to update the photo.',
+	// 		)
+	// 	} finally {
+	// 		setLoading(false)
+	// 	}
+	// }
 
 	const handleDelete = async () => {
 		setLoading(true)
