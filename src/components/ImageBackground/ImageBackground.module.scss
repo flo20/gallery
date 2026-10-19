@@ -1,16 +1,23 @@
 .background {
 	position: relative;
-    display: flex;
+	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	width: 100%;
+	min-width: 0;
 	min-height: 32rem;
+	margin: 0;
+	padding: 0;
+
 	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .video {
 	position: absolute;
 	inset: 0;
+	display: block;
 
 	width: 100%;
 	height: 100%;
@@ -35,8 +42,11 @@
 
 .content {
 	position: relative;
-	width: 100%;
 	z-index: 2;
+
+	width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
 }
 
 // Tablet
@@ -52,7 +62,13 @@
 		min-height: 26rem;
 	}
 
-	// .video {
-	// 	object-position: center;
-	// }
+	.video {
+		object-position: center;
+	}
+}
+
+@media (max-width: 360px) {
+	.background {
+		min-height: 29rem;
+	}
 }
