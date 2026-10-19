@@ -5,7 +5,7 @@ A modern image collection app built with **React, TypeScript, and Supabase**.
 
 Gallery lets users explore, search, and publish images through a responsive interface. It combines a clean frontend experience with authentication, cloud storage, and database integration.
 
-**[Live Demo](YOUR_LIVE_URL)** 
+**[Live Demo](https://gallery-39ds.vercel.app/)** 
 
 ---
 
