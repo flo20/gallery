@@ -26,19 +26,19 @@ Gallery lets users explore, search, and publish images through a responsive inte
 
 Browse images and search by name or tags.
 
-![Gallery Explore Page](./screenshots/explore.png)
+![Gallery Explore Page](./docs/images/explore.png)
 
 ### Upload Images
 
 Publish images using a file upload or a direct image URL, with validation and image previews.
 
-![Gallery Upload Page](./screenshots/upload.png)
+![Gallery Upload Page](./docs/images/explore.png)
 
 ### My Gallery
 
 View uploaded images in a dedicated gallery interface.
 
-![My Gallery Page](./screenshots/my-gallery.png)
+![My Gallery Page](./docs/images/gallery.png)
 
 ---
 
