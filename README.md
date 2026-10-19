@@ -32,7 +32,7 @@ Browse images and search by name or tags.
 
 Publish images using a file upload or a direct image URL, with validation and image previews.
 
-![Gallery Upload Page](./docs/images/explore.png)
+![Gallery Upload Page](./docs/images/upload.png)
 
 ### My Gallery
 
